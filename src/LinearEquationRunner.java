@@ -11,15 +11,16 @@ public class LinearEquationRunner {
         String coord2 = scan.nextLine();
         System.out.println();
 
-        //Debug
-        System.out.println(coord1 + " " + coord2);
+//        //Debug
+//        System.out.println(coord1 + " " + coord2);
 
-        //Coordinate to int
+        //Coordinate to int setup
         int x1, y1;
         int x2, y2;
         int commaPos1 = coord1.indexOf(",");
         int commaPos2 = coord2.indexOf(",");
 
+        //Separation and parseInt
         String strNumX1 = coord1.substring(1,commaPos1);
         String strNumY1 = coord1.substring(commaPos1 + 2, coord1.length() - 1);
         x1 = Integer.parseInt(strNumX1);
@@ -30,24 +31,27 @@ public class LinearEquationRunner {
         x2 = Integer.parseInt(strNumX2);
         y2 = Integer.parseInt(strNumY2);
 
-        //Debug
-        System.out.println(x1);
-        System.out.println(y1);
-        System.out.println(x2);
-        System.out.println(y2);
+//        //Debug
+//        System.out.println(x1);
+//        System.out.println(y1);
+//        System.out.println(x2);
+//        System.out.println(y2);
 
-        //Object creation
+        //Checks if points are on a vertical line
+        if (x1 == x2) {
+            System.out.println("These points are on a vertical line: x = " + x1);
+            Runtime.getRuntime().exit(1);
+        }
+
+        //Object creation and info print
         LinearEquation lnE1 = new LinearEquation(x1,y1,x2,y2);
         System.out.println(lnE1.lineInfo());
         System.out.println();
+
+        //Coordinate on line for given x value
         System.out.print("Enter a value for x: ");
         double xValue = scan.nextDouble();
         System.out.println("The point on the line is " + lnE1.coordinateForX(xValue));
-
-
-
-
-
 
     }
 }
